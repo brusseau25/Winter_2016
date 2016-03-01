@@ -28,7 +28,6 @@ occurrenceIndicationColor=0,0,0
 org.eclipse.cdt.ui.occurrenceIndicationColor=0,0,0
 overriddenByCSS=,AbstractTextEditor.Color.Background.SystemDefault,AbstractTextEditor.Color.SelectionForeground.SystemDefault,AbstractTextEditor.Color.SelectionBackground.SystemDefault,AbstractTextEditor.Color.Foreground.SystemDefault,breakpointIndicationColor,hyperlinkColor,hyperlinkColor.SystemDefault,infoIndicationColor,linked.slave.color,overrideIndicatorColor,searchResultHighlighting,searchResultIndication,searchResultTextStyle,spellingIndicationColor,
 overrideIndicatorColor=78,120,117
-overviewRuler_migration=migrated_3.1
 printMarginColor=43,145,175
 pydevOccurrenceIndicationColor=0,0,0
 searchResultHighlighting=false
