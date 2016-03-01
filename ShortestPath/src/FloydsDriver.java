@@ -18,7 +18,5 @@ public class FloydsDriver extends FloydsAlgorithm {
 		writeShortestPath(shortestPath);
 
 		keyboard.close();
-
-//added a comment on this line
 	}
 }
