@@ -47,6 +47,9 @@ public class DijkstrasAlgorithm {
 	public static int[][] dijkstra(int[][] matrixA) {
 		initializeVariables(matrixA);
 		for (int k = 0; k < matrixA.length; k++) {
+			// for (int i = 0; i < remainingVertices.length; i++) {
+			// System.out.print(remainingVertices[i] + " ");
+			// }
 			updateCurrentVertex();
 			for (int i = 0; i < matrixA.length; i++) {
 				if (remainingVertices[i] != true)
