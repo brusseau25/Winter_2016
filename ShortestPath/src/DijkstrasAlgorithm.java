@@ -109,18 +109,26 @@ public class DijkstrasAlgorithm {
 		PrintWriter print = null;
 		try {
 			print = new PrintWriter(file + "Out.txt");
-			for (int i = 0; i < matrixA.length; i++) {
-				if (i == sourceVertex) {
-					print.write("[" + distance[i] + "]" + " " + (i + 1));
-					print.write("\n");
-				} else if (pathFrom[i] == sourceVertex) {
-					print.write("[" + distance[i] + "]" + " " + (sourceVertex + 1) + "-" + (i + 1));
-					print.write("\n");
-				} else {
-					print.write("[" + distance[i] + "]" + " " + (sourceVertex + 1) + "-" + (pathFrom[i] + 1) + "-"
-							+ (i + 1));
-					print.write("\n");
-				}
+			// for (int i = 0; i < matrixA.length; i++) {
+			// if (i == sourceVertex) {
+			// print.write("[" + distance[i] + "]" + " " + (i + 1));
+			// print.write("\n");
+			// } else if (pathFrom[i] == sourceVertex) {
+			// print.write("[" + distance[i] + "]" + " " + (sourceVertex + 1) +
+			// "-" + (i + 1));
+			// print.write("\n");
+			// } else {
+			// print.write("[" + distance[i] + "]" + " " + (sourceVertex + 1) +
+			// "-" + (pathFrom[i] + 1) + "-"
+			// + (i + 1));
+			// print.write("\n");
+			// }
+			// }
+			for (int i = 0; i < pathFrom.length; i++) {
+				// System.out.print((pathFrom[i] + 1) + " ");
+				print.write("[" + distance[i] + "]" + " ");
+				print.write(calculatePath(i, print));
+				print.write("\n");
 			}
 			System.out.println("Your file has been successfully written");
 		} catch (FileNotFoundException e) {
@@ -142,5 +150,15 @@ public class DijkstrasAlgorithm {
 			}
 		}
 		System.out.println();
+	}
+
+	private static String calculatePath(int source, PrintWriter print) {
+		if (source == sourceVertex) {
+			return (sourceVertex + 1) + "";
+		} else if (pathFrom[source] == sourceVertex) {
+			return ((pathFrom[source] + 1) + "->" + (source + 1));
+		} else
+			return (calculatePath(pathFrom[source], print) + "->" + (source + 1));
+
 	}
 }

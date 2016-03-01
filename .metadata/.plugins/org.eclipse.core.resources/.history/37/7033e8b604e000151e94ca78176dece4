@@ -1,0 +1,166 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class DijkstrasAlgorithm {
+	static boolean[] remainingVertices;
+	static int[] distance;
+	static int[] pathFrom;
+	static String file;
+	static int sourceVertex, minIndex;
+	static int infinite = 999999999;
+
+	// initialize array based on user input given from a file
+	public static int[][] initializeMatrix(String file) {
+		int[][] matrixA = null;
+		Scanner scanner = null;
+		FloydsAlgorithm.file = file;
+		int num = 0;
+		int value;
+		try {
+			scanner = new Scanner(new File(file));
+			num = scanner.nextInt();
+			matrixA = new int[num][num];
+			for (int i = 0; i < matrixA.length; i++) {
+				for (int j = 0; j < matrixA.length; j++) {
+					if ((value = scanner.nextInt()) == 0 && (i != j)) {
+						matrixA[i][j] = infinite;
+					} else {
+						matrixA[i][j] = value;
+					}
+				}
+			}
+			sourceVertex = scanner.nextInt() - 1;
+			minIndex = sourceVertex;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			scanner.close();
+		}
+		return matrixA;
+	}
+
+	// perform dijkstras algorithm on matrix to produce the shortest path
+	public static int[][] dijkstra(int[][] matrixA) {
+		initializeVariables(matrixA);
+		for (int k = 0; k < matrixA.length; k++) {
+			updateCurrentVertex();
+			for (int i = 0; i < matrixA.length; i++) {
+				if (remainingVertices[i] != true)
+					if (distance[minIndex] + matrixA[minIndex][i] < distance[i]) {
+						distance[i] = distance[minIndex] + matrixA[minIndex][i];
+						pathFrom[i] = minIndex;
+					}
+			}
+		}
+		return matrixA;
+	}
+
+	private static void updateCurrentVertex() {
+		int shortest = 999999999;
+		// find the shortest distance
+		for (int i = 0; i < remainingVertices.length; i++) {
+			if (remainingVertices[i] != true)
+				if ((distance[i] < shortest) && (distance[i] > 0)) {
+					shortest = distance[i];
+					minIndex = i;
+				}
+		}
+		remainingVertices[minIndex] = true;
+	}
+
+	private static void initializeVariables(int[][] matrix) {
+		// keep tracks of which vertices have been visited
+		remainingVertices = new boolean[matrix.length];
+		for (int i = 0; i < remainingVertices.length; i++) {
+			if (i == minIndex) {
+				remainingVertices[i] = true;
+			} else
+				remainingVertices[i] = false;
+		}
+		// shortest distance from A-B
+		distance = new int[matrix.length];
+		for (int i = 0; i < distance.length; i++) {
+			distance[i] = matrix[sourceVertex][i];
+		}
+		// previous vertex
+		pathFrom = new int[matrix.length];
+		for (int i = 0; i < pathFrom.length; i++) {
+			pathFrom[i] = sourceVertex;
+		}
+	}
+
+	// initialize a random matrix with values 1-1000
+	public static int[][] randomMatrix(int size) {
+		int[][] randomMatrix = new int[size][size];
+		for (int i = 0; i < randomMatrix.length; i++) {
+			for (int j = 0; j < randomMatrix.length; j++) {
+				randomMatrix[i][j] = (int) (Math.random() * 1000) + 1;
+			}
+		}
+		return randomMatrix;
+	}
+
+	// write shortest path to a file
+	public static void writeShortestPath(int[][] matrixA, String file) {
+		PrintWriter print = null;
+		try {
+			print = new PrintWriter(file + "Out.txt");
+			for (int i = 0; i < matrixA.length; i++) {
+				print.write(distance[i] + " ");
+				print.write((pathFrom[i] + 1) + " ");
+				print.write("\n");
+			}
+			// for (int i = 0; i < matrixA.length; i++) {
+			// if (i == sourceVertex) {
+			// print.write("[" + distance[i] + "]" + " " + (i + 1));
+			// print.write("\n");
+			// } else if (pathFrom[i] == sourceVertex) {
+			// print.write("[" + distance[i] + "]" + " " + (sourceVertex + 1) +
+			// "-" + (i + 1));
+			// print.write("\n");
+			// } else {
+			// print.write("[" + distance[i] + "]" + " " + (sourceVertex + 1) +
+			// "-" + (pathFrom[i] + 1) + "-"
+			// + (i + 1));
+			// print.write("\n");
+			// }
+			// }
+			for (int i = pathFrom.length - 1; i >= 0; i--) {
+				System.out.print((pathFrom[i] + 1) + " ");
+				print.write(calculatePath(i, print) + "-");
+				print.write("\n");
+			}
+			System.out.println("Your file has been successfully written");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			print.close();
+		}
+
+	}
+
+	// display the matrix
+	public static void printMatrix(int[][] matrixA) {
+		System.out.println(matrixA.length);
+		for (int i = 0; i < matrixA.length; i++) {
+			for (int j = 0; j < matrixA.length; j++) {
+				System.out.println(matrixA[i][j] + " ");
+			}
+		}
+		System.out.println();
+	}
+
+	private static String calculatePath(int source, PrintWriter print) {
+		if (pathFrom[source] == sourceVertex) {
+			return (pathFrom[source] + 1) + "";
+		} else
+			return (calculatePath(pathFrom[source], print) + "-" + (pathFrom[source] + 1)) +"-" source;
+
+	}
+}
