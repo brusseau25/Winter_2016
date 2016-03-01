@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 4 elements to &apos;TransitiveClosure&apos;&#x0A;- Original project: &apos;TransitiveClosure&apos;&#x0A;- Destination element: &apos;TransitiveClosure&apos;&#x0A;- Original elements:&#x0A;     file1&#x0A;     file2&#x0A;     file3&#x0A;     file4&#x0A;- Update references to refactored element" description="Move files" destination="=TransitiveClosure" element1="src/file1" element2="src/file2" element3="src/file3" element4="src/file4" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1456866094006" units="0" version="1.0"/>
+</session>
