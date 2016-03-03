@@ -110,7 +110,7 @@ public class DijkstrasAlgorithm {
 				}
 			}
 		}
-		sourceVertex = (int) (Math.random() * size);
+		sourceVertex = (int) (Math.random() * size) + 1;
 		return randomMatrix;
 	}
 

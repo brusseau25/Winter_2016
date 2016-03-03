@@ -15,7 +15,7 @@ public class DijkstraDriver extends DijkstrasAlgorithm {
 		int[][] matrix = initializeMatrix(file);
 
 		dijkstra(matrix);
-		writeShortestPath(file);
+		writeShortestPath(matrix, file);
 
 		keyboard.close();
 	}

@@ -103,19 +103,15 @@ public class DijkstrasAlgorithm {
 		int[][] randomMatrix = new int[size][size];
 		for (int i = 0; i < randomMatrix.length; i++) {
 			for (int j = 0; j < randomMatrix.length; j++) {
-				if (i == j) {
-					randomMatrix[i][j] = 0;
-				} else {
-					randomMatrix[i][j] = (int) (Math.random() * 1000) + 1;
-				}
+				randomMatrix[i][j] = (int) (Math.random() * 1000) + 1;
 			}
 		}
-		sourceVertex = (int) (Math.random() * size);
+		sourceVertex = (int) (Math.random() * size) + 1;
 		return randomMatrix;
 	}
 
 	// write shortest path to a file
-	public static void writeShortestPath(String file) {
+	public static void writeShortestPath(int[][] matrixA, String file) {
 		PrintWriter print = null;
 		try {
 			print = new PrintWriter(file + "Out.txt");
@@ -133,6 +129,17 @@ public class DijkstrasAlgorithm {
 			print.close();
 		}
 
+	}
+
+	// display the matrix
+	public static void printMatrix(int[][] matrixA) {
+		System.out.println(matrixA.length);
+		for (int i = 0; i < matrixA.length; i++) {
+			for (int j = 0; j < matrixA.length; j++) {
+				System.out.println(matrixA[i][j] + " ");
+			}
+		}
+		System.out.println();
 	}
 
 	// calculates the shortest path
