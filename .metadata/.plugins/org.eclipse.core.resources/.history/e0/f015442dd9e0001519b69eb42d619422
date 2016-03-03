@@ -1,10 +1,9 @@
+import java.util.Scanner;
 
 /*
  * Brandon Russeau
  * COSC 314
  */
-import java.util.Scanner;
-
 public class RandomFloydDriver extends FloydsAlgorithm {
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);

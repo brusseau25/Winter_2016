@@ -1,8 +1,3 @@
-
-/*
- * Brandon Russeau
- * COSC 314
- */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -149,5 +144,6 @@ public class DijkstrasAlgorithm {
 			return ((pathFrom[source] + 1) + "->" + (source + 1));
 		} else
 			return (calculatePath(pathFrom[source], print) + "->" + (source + 1));
+
 	}
 }
