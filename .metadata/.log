@@ -521,3 +521,9 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 4 4 2016-03-02 20:26:47.024
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@28e91f6d)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@3dc82fce)}
+
+!ENTRY org.eclipse.ui 4 4 2016-03-02 20:33:50.686
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@28e91f6d)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@2c0e673e)}
