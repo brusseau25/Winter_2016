@@ -1,0 +1,21 @@
+import java.util.Random;
+
+public class Pi {
+
+	public static void main(String[] args) {
+		Random randNum = new Random(100);
+
+	}
+
+	/*
+	 * code from: http://java67.blogspot.com/2012/08/
+	 * java-program-to-find-gcd-of-two-numbers.html
+	 */
+	private static int findGCD(int x, int y) {
+		// base case
+		if (y == 0) {
+			return x;
+		}
+		return findGCD(y, x % y);
+	}
+}

@@ -1,0 +1,27 @@
+import java.util.Random;
+
+public class Pi {
+
+	public static void main(String[] args) {
+		Random randNum = new Random();
+		double x, y, gcd;
+
+		x = randNum.nextDouble() * 100 + 1;
+		y = randNum.nextDouble() * 100 + 1;
+		System.out.printf("x=%f y=%f \n", x, y);
+		gcd = findGCD(x, y);
+		System.out.printf("gcd=%f \n", gcd);
+	}
+
+	/*
+	 * code from: http://java67.blogspot.com/2012/08/
+	 * java-program-to-find-gcd-of-two-numbers.html
+	 */
+	private static double findGCD(double x, double y) {
+		// base case
+		if (y == 0) {
+			return x;
+		}
+		return findGCD(y, x % y);
+	}
+}

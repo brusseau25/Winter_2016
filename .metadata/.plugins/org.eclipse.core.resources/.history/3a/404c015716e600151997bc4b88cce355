@@ -1,0 +1,60 @@
+import java.util.Random;
+
+public class Pi {
+
+	public static void main(String[] args) {
+		Random randNum = new Random();
+		int[] randIntArray = new int[1000];
+		int gcd;
+		int sum = 0;
+		double[] randDoubArray = new double[1000];
+		
+		//initialize int array
+		for (int i = 0; i < randIntArray.length; i++) {
+			randIntArray[i] = randNum.nextInt(100) + 1;
+		}
+		
+		//initialize double array
+		for (int i = 0; i < randDoubArray.length; i++) {
+			randDoubArray[i] = Math.random()*100;
+		}
+
+		//find gcd for int array
+		for (int j = 0; j < randIntArray.length / 2; j++) {
+			gcd = findGCD(randIntArray[j], randIntArray[j + 1]);
+			if (gcd == 1) {
+				sum++;
+			}
+		}
+		
+		//find gcd for int array
+				for (int j = 0; j < randIntArray.length / 2; j++) {
+					gcd = findGCD(randIntArray[j], randIntArray[j + 1]);
+					if (gcd == 1) {
+						sum++;
+					}
+				}
+
+		System.out.printf("Estimate of pi = %f", estimatePI(randIntArray, sum));
+	}
+
+	/*
+	 * code from: http://java67.blogspot.com/2012/08/
+	 * java-program-to-find-gcd-of-two-numbers.html
+	 */
+	private static int findGCD(int x, int y) {
+		// base case
+		if (y == 0) {
+			return x;
+		}
+		return findGCD(y, x % y);
+	}
+
+	private static double estimatePI(int[] matrix, int sum) {
+		double PI, num;
+		num = (double) sum / matrix.length;
+		PI = Math.sqrt(6.0 / num);
+
+		return PI;
+	}
+}
