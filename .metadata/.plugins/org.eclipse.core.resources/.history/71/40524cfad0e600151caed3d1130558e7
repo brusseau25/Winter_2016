@@ -1,0 +1,11 @@
+package scheduler;
+
+public class Work implements JobWorkable {
+
+	@Override
+	public void doWork() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

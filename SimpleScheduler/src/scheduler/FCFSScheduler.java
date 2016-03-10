@@ -1,3 +1,7 @@
+/*
+ * Brandon Russeau
+ * COSC 423
+ */
 package scheduler;
 
 public class FCFSScheduler extends Scheduler {
@@ -21,7 +25,11 @@ public class FCFSScheduler extends Scheduler {
 		 * invokes start() on it
 		 *
 		 */
-		return true; // TO_DO ***SHOULDN'T ALWAYS RETURN TRUE***
+		if (hasJobsQueued()) {
+			return true;
+		} else {
+			return false; // TO_DO ***SHOULDN'T ALWAYS RETURN TRUE***
+		}
 	}
 
 	/**
@@ -37,6 +45,13 @@ public class FCFSScheduler extends Scheduler {
 		 * Place code here that will cause the calling thread to block until the
 		 * ready queue contains a Job
 		 */
+		try {
+			Thread.currentThread().sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		System.out.println("evidently there is now a job on readyQ");
 	}
 

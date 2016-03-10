@@ -1,7 +1,11 @@
+/*
+ * Brandon Russeau
+ * COSC 423
+ */
 package scheduler;
 
-import java.io.*;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * <p>Title: RunScheduler</p>
@@ -15,6 +19,7 @@ import java.util.*;
  */
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * <p>

@@ -5,7 +5,7 @@ public class Pi {
 	public static void main(String[] args) {
 		Random randNum = new Random();
 		int[] randIntArray = new int[1000];
-		int gcd;
+		double gcd;
 		int sumInt = 0;
 		double sumDoub = 0.0;
 		double[] randDoubArray = new double[1000];
@@ -21,17 +21,17 @@ public class Pi {
 		}
 
 		// find gcd for int array
-		for (int j = 0; j < randIntArray.length / 2; j++) {
+		for (int j = 0; j < randIntArray.length - 1; j++) {
 			gcd = findGCD(randIntArray[j], randIntArray[j + 1]);
-			if (gcd == 1) {
+			if (gcd == 1.0) {
 				sumInt++;
 			}
 		}
 
 		// find gcd for double array
-		for (int j = 0; j < randDoubArray.length / 2; j++) {
+		for (int j = 0; j < randDoubArray.length - 1; j++) {
 			gcd = findGCD((int) randDoubArray[j], (int) randDoubArray[j + 1]);
-			if (gcd == 1) {
+			if (gcd == 1.0) {
 				sumDoub++;
 			}
 		}
@@ -55,6 +55,7 @@ public class Pi {
 	private static double estimatePI(int[] matrix, int sum) {
 		double PI, num;
 		num = (double) sum / matrix.length;
+		System.out.println(num);
 		PI = Math.sqrt(6.0 / num);
 
 		return PI;

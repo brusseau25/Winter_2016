@@ -1,3 +1,7 @@
+/*
+ * Brandon Russeau
+ * COSC 423
+ */
 package scheduler;
 
 import java.util.ArrayList;
@@ -42,7 +46,10 @@ public class GanntChart {
 	}
 
 	public void print() {
-		System.out.println("TO_DO GanntChart.print not yet implemented");
+		// System.out.println("TO_DO GanntChart.print not yet implemented");
+		for (int i = 0; i < events.size(); i++) {
+			System.out.println("Description: " + events.get(i));
+		}
 	}
 
 	/**

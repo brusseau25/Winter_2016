@@ -1,3 +1,7 @@
+/*
+ * Brandon Russeau
+ * COSC 423
+ */
 package scheduler;
 
 import java.util.ArrayList;
@@ -77,12 +81,17 @@ class Submittor extends Thread {
 											// FCFS this will be a single
 											// integer token)
 
-			System.out.println("TO_DO Complete Submittor.run()");
+			// System.out.println("TO_DO Complete Submittor.run()");
 			/*
 			 * Provide code that will set id, delay, and burstDescription from
 			 * jobDesc.
 			 * 
 			 */
+			st = new StringTokenizer(jobDesc, " ");
+
+			id = st.nextToken();
+			burstDescription = st.nextToken();
+
 			try {
 				sleep(delay); // wait until submission
 			} catch (InterruptedException e) {

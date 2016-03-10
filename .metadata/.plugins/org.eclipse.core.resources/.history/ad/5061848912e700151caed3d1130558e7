@@ -1,0 +1,33 @@
+
+public class Color {
+	public static int[][] colorArray = null;
+	public static int[] chromaticNum = null;
+
+	int color() {
+		for (int i = 1; i < colorArray.length; i++) {
+			if (color(0, i)) {
+				return i;
+			}
+		}
+	}
+
+	boolean color(int v, int m) {
+		if (v > colorArray.length) {
+			return true;
+		} else {
+			for (int i = 1; i < m; i++) {
+				chromaticNum[v] = i;
+				if (noConflict()) {
+					color(v + 1, m);
+					return true;
+				}
+			}
+			chromaticNum[v] = 0;
+			return false;
+		}
+	}
+
+	boolean noConflict() {
+		return false;
+	}
+}

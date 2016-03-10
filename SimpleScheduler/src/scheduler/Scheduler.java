@@ -1,3 +1,7 @@
+/*
+ * Brandon Russeau
+ * COSC 423
+ */
 package scheduler;
 
 /**
