@@ -88,7 +88,6 @@ class Submittor extends Thread {
 			 * 
 			 */
 			st = new StringTokenizer(jobDesc, " ");
-
 			id = st.nextToken();
 			burstDescription = st.nextToken();
 

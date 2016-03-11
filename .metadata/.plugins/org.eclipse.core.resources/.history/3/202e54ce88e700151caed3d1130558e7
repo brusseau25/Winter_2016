@@ -14,7 +14,6 @@ public class Color {
 			scanner = new Scanner(new File(file));
 			num = scanner.nextInt();
 			colorArray = new int[num][num];
-			chromaticNum = new int[num];
 			scanner.nextInt();
 			while (scanner.hasNextLine()) {
 				num = scanner.nextInt();
@@ -31,7 +30,7 @@ public class Color {
 	}
 
 	public int color() {
-		for (int i = 1; i < colorArray.length; i++) {
+		for (int i = 1; i < colorArray.length - 1; i++) {
 			if (color(0, i)) {
 				return i;
 			}
@@ -40,7 +39,7 @@ public class Color {
 	}
 
 	boolean color(int v, int m) {
-		if (v > colorArray.length) {
+		if (v > colorArray.length - 1) {
 			return true;
 		} else {
 			for (int i = 1; i < m; i++) {
@@ -56,7 +55,7 @@ public class Color {
 	}
 
 	boolean noConflict(int v) {
-		for (int i = 0; i < colorArray.length; i++) {
+		for (int i = 0; i < colorArray.length - 1; i++) {
 			if (colorArray[v][i] == 1) {
 				if (chromaticNum[v] == chromaticNum[i]) {
 					return false;

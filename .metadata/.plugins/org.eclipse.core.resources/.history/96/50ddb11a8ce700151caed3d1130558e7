@@ -31,7 +31,7 @@ public class Color {
 	}
 
 	public int color() {
-		for (int i = 1; i < colorArray.length; i++) {
+		for (int i = 1; i < colorArray.length ; i++) {
 			if (color(0, i)) {
 				return i;
 			}

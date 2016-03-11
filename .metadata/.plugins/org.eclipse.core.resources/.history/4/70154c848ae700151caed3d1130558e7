@@ -18,7 +18,7 @@ public class FCFSScheduler extends Scheduler {
 	 * Thread.start() on it.
 	 */
 	public boolean makeRun() {
-		// System.out.println("TO_DO: makeRun not yet implemented");
+		//System.out.println("TO_DO: makeRun not yet implemented");
 
 		/*
 		 * Place code here that gets the next Job from the ready queue and
@@ -46,7 +46,12 @@ public class FCFSScheduler extends Scheduler {
 		 * Place code here that will cause the calling thread to block until the
 		 * ready queue contains a Job
 		 */
-		notify();
+		try {
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		System.out.println("evidently there is now a job on readyQ");
 	}

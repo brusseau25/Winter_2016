@@ -101,9 +101,8 @@ class SystemSimulator extends Thread {
 			 * for the kernel and the Jobs.
 			 */
 			try {
-				singleThreadMutex.newCondition().await();
-				myScheduler.getRunningJob().getMyCondition().signal();
-
+				myScheduler.getRunningJob().getMyCondition().await();
+				singleThreadMutex.newCondition().signal();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

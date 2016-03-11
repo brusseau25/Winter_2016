@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 public class ColorDriver extends Color {
-
-	private ColorDriver(String file) {
+	public ColorDriver(String file) {
 		super(file);
 		// TODO Auto-generated constructor stub
 	}
@@ -18,6 +17,5 @@ public class ColorDriver extends Color {
 		colorMatrix = new Color(file);
 		System.out.println(colorMatrix.color());
 
-		keyboard.close();
 	}
 }

@@ -50,9 +50,7 @@ public class GanntChart {
 		System.out.println("Gannt Chart: ");
 		System.out.println("BurstStart  BurstEnd  Job");
 		for (int i = 0; i < events.size(); i++) {
-			System.out.print("Description: " + events.get(i).startTime + " ");
-			System.out.print("Description: " + events.get(i).endTime + " ");
-			System.out.print("Description: " + events.get(i).eventDescriptor + "\n");
+			System.out.print("Description: " + events.get(i).startTime +" ");
 		}
 	}
 

@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 public class ColorDriver extends Color {
-
-	private ColorDriver(String file) {
+	public ColorDriver(String file) {
 		super(file);
 		// TODO Auto-generated constructor stub
 	}
