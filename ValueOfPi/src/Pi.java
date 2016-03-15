@@ -1,50 +1,60 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Pi {
+	static String file;
+	static Random randNum = new Random();
+	static double gcd;
+	static int sumInt = 0;
 
-	public static void main(String[] args) {
-		Random randNum = new Random();
-		int[] randIntArray = new int[1000];
-		double gcd;
-		int sumInt = 0;
-		double sumDoub = 0.0;
-		double[] randDoubArray = new double[1000];
+	// initialize array based on input given from a file
+	public static int[] initTRNGArray(String file) {
+		int[] matrixA = null;
+		Scanner scanner = null;
+		int num = 5000;
+		try {
+			scanner = new Scanner(new File(file));
 
+			matrixA = new int[num];
+			for (int i = 0; i < matrixA.length; i++) {
+				matrixA[i] = scanner.nextInt();
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			scanner.close();
+		}
+		return matrixA;
+	}
+
+	public static int[] initIntArray(int length) {
+		int[] matrix = new int[length];
 		// initialize int array
-		for (int i = 0; i < randIntArray.length; i++) {
-			randIntArray[i] = randNum.nextInt(100) + 1;
+		for (int i = 0; i < matrix.length; i++) {
+			matrix[i] = randNum.nextInt(1000) + 1;
 		}
+		return matrix;
+	}
 
-		// initialize double array
-		for (int i = 0; i < randDoubArray.length; i++) {
-			randDoubArray[i] = Math.random() * 100;
-		}
-
+	public static void calcGCD(int[] matrix) {
 		// find gcd for int array
-		for (int j = 0; j < randIntArray.length - 1; j++) {
-			gcd = findGCD(randIntArray[j], randIntArray[j + 1]);
+		for (int j = 0; j < matrix.length - 1; j++) {
+			gcd = findGCD(matrix[j], matrix[j + 1]);
 			if (gcd == 1.0) {
 				sumInt++;
 			}
 		}
-
-		// find gcd for double array
-		for (int j = 0; j < randDoubArray.length - 1; j++) {
-			gcd = findGCD((int) randDoubArray[j], (int) randDoubArray[j + 1]);
-			if (gcd == 1.0) {
-				sumDoub++;
-			}
-		}
-
-		System.out.printf("Estimate of pi (int array) = %f \n", estimatePI(randIntArray, sumInt));
-		System.out.printf("Estimate of pi (double array) = %f \n", estimatePI(randDoubArray, sumDoub));
 	}
 
 	/*
 	 * code from: http://java67.blogspot.com/2012/08/
 	 * java-program-to-find-gcd-of-two-numbers.html
 	 */
-	private static int findGCD(int x, int y) {
+	protected static int findGCD(int x, int y) {
 		// base case
 		if (y == 0) {
 			return x;
@@ -52,7 +62,7 @@ public class Pi {
 		return findGCD(y, x % y);
 	}
 
-	private static double estimatePI(int[] matrix, int sum) {
+	protected static double estimatePI(int[] matrix, int sum) {
 		double PI, num;
 		num = (double) sum / matrix.length;
 		System.out.println(num);
@@ -61,11 +71,4 @@ public class Pi {
 		return PI;
 	}
 
-	private static double estimatePI(double[] matrix, double sum) {
-		double PI, num;
-		num = sum / matrix.length;
-		PI = Math.sqrt(6.0 / num);
-
-		return PI;
-	}
 }

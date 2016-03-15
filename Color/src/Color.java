@@ -57,7 +57,7 @@ public class Color {
 
 	boolean noConflict(int v) {
 		for (int i = 0; i < colorArray.length; i++) {
-			if (colorArray[v][i] == 1) {
+			if (colorArray[v][i] == 1 && chromaticNum[i] != 0) {
 				if (chromaticNum[v] == chromaticNum[i]) {
 					return false;
 				}
