@@ -1,3 +1,13 @@
+
+/*
+ * Brandon Russeau
+ * Ryan Hodgman
+ * Isaiah Fuller
+ * 
+ * COSC 374
+ * Estimate the value of PI based on Cesaro's Theorem
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -7,7 +17,7 @@ public class Pi {
 	static String file;
 	static Random randNum = new Random();
 	static double gcd;
-	static int sumInt = 0;
+	static int sumInt;
 
 	// initialize array based on input given from a file
 	public static int[] initTRNGArray(String file) {
@@ -41,6 +51,7 @@ public class Pi {
 	}
 
 	public static void calcGCD(int[] matrix) {
+		sumInt = 0;
 		// find gcd for int array
 		for (int j = 0; j < matrix.length - 1; j++) {
 			gcd = findGCD(matrix[j], matrix[j + 1]);
@@ -62,10 +73,9 @@ public class Pi {
 		return findGCD(y, x % y);
 	}
 
-	protected static double estimatePI(int[] matrix, int sum) {
+	protected static double estimatePI(int[] matrix) {
 		double PI, num;
-		num = (double) sum / matrix.length;
-		System.out.println(num);
+		num = (double) sumInt / matrix.length;
 		PI = Math.sqrt(6.0 / num);
 
 		return PI;

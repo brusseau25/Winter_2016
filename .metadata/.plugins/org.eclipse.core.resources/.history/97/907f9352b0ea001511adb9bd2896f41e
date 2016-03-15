@@ -1,0 +1,25 @@
+public class PiDriver extends Pi {
+	public static void main(String[] args) {
+		int[] randIntArray = new int[5000];
+		int[] trngNum = new int[5000];
+		double piAverageTRNG = 0.0;
+		double piAvgInt = 0.0;
+
+		for (int i = 1; i < 11; i++) {
+			trngNum = initTRNGArray("test" + i + ".txt");
+			calcGCD(trngNum);
+			piAverageTRNG += estimatePI(trngNum);
+		}
+		piAverageTRNG /= 5;
+		System.out.printf("Estimate of pi (trng array) = %f \n", piAverageTRNG);
+
+		for (int i = 1; i <11; i++) {
+			randIntArray = initIntArray(randIntArray.length);
+			calcGCD(randIntArray);
+			piAvgInt += estimatePI(randIntArray);
+		}
+		piAvgInt /= 5;
+		System.out.printf("Estimate of pi (int array) = %f \n", piAvgInt);
+
+	}
+}
