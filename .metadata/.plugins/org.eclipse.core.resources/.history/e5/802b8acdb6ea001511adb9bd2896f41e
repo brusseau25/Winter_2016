@@ -50,15 +50,6 @@ public class Pi {
 		return matrix;
 	}
 
-	// finish implementation of BBS method
-	// mod product of 2 primes
-	// seed < mod
-	public static void generateBBS(long[] arr, long seed, long mod) {
-		long x = seed;
-		for (int i = 0; i < arr.length; i++)
-			arr[i] = x = (((long) Math.pow(x, 2)) % mod);
-	}
-
 	public static void calcGCD(int[] matrix) {
 		sumInt = 0;
 		// find gcd for int array
