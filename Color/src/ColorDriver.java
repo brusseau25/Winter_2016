@@ -17,6 +17,7 @@ public class ColorDriver extends Color {
 
 		colorMatrix = new Color(file);
 		System.out.println(colorMatrix.color());
+		printColor();
 
 		keyboard.close();
 	}

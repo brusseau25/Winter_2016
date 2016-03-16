@@ -15,13 +15,12 @@ public class Color {
 			num = scanner.nextInt();
 			colorArray = new int[num][num];
 			chromaticNum = new int[num];
-			scanner.nextInt();
+			num2 = scanner.nextInt();
 			while (scanner.hasNextLine()) {
 				num = scanner.nextInt();
 				num2 = scanner.nextInt();
 				colorArray[num - 1][num2 - 1] = 1;
 			}
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,38 +29,64 @@ public class Color {
 		}
 	}
 
+	public static void print() {
+		for (int i = 0; i < colorArray.length; i++) {
+			for (int j = 0; j < colorArray.length; j++) {
+				System.out.print(colorArray[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	public static void printColor() {
+		for (int j = 0; j < colorArray.length; j++) {
+			System.out.println((j + 1) + " " + chromaticNum[j]);
+		}
+	}
+
 	public int color() {
-		for (int i = 1; i < colorArray.length; i++) {
+		for (int i = 0; i < colorArray.length; i++) {
 			if (color(0, i)) {
 				return i;
 			}
 		}
-		return 0;
+		return -1;
 	}
 
 	boolean color(int v, int m) {
-		if (v > colorArray.length) {
+		if (v > (colorArray.length - 1)) {
 			return true;
 		} else {
-			for (int i = 1; i < m; i++) {
+			for (int i = 0; i <= m; i++) {
 				chromaticNum[v] = i;
-				if (noConflict(v)) {
+				if (!isConflict(v)) {
 					color(v + 1, m);
-					return true;
+
+					if (isFinished())
+						return true;
+				} else {
+					chromaticNum[v] = 0;
 				}
 			}
-			chromaticNum[v] = 0;
 			return false;
 		}
 	}
 
-	boolean noConflict(int v) {
+	boolean isConflict(int v) {
 		for (int i = 0; i < colorArray.length; i++) {
-			if (colorArray[v][i] == 1 && chromaticNum[i] != 0) {
+			if ((colorArray[v][i] == 1)) {
 				if (chromaticNum[v] == chromaticNum[i]) {
-					return false;
+					return true;
 				}
 			}
+		}
+		return false;
+	}
+
+	boolean isFinished() {
+		for (int i = 0; i < chromaticNum.length; i++) {
+			if (isConflict(i) || chromaticNum[i] == 0)
+				return false;
 		}
 		return true;
 	}
