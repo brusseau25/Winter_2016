@@ -20,6 +20,7 @@ public class Color {
 				num = scanner.nextInt();
 				num2 = scanner.nextInt();
 				colorArray[num - 1][num2 - 1] = 1;
+				colorArray[num2 - 1][num - 1] = 1;
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -45,7 +46,8 @@ public class Color {
 	}
 
 	public int color() {
-		for (int i = 0; i < colorArray.length; i++) {
+		for (int i = 1; i <= colorArray.length; i++) {
+			System.out.println("Now attempting to color with " + i + " colors");
 			if (color(0, i)) {
 				return i;
 			}
@@ -54,20 +56,17 @@ public class Color {
 	}
 
 	boolean color(int v, int m) {
-		if (v > (colorArray.length - 1)) {
+		if (v == (colorArray.length)) {
 			return true;
 		} else {
-			for (int i = 0; i <= m; i++) {
+			for (int i = 1; i <= m; i++) {
 				chromaticNum[v] = i;
 				if (!isConflict(v)) {
-					color(v + 1, m);
-
-					if (isFinished())
+					if (color(v + 1, m))
 						return true;
-				} else {
-					chromaticNum[v] = 0;
 				}
 			}
+			chromaticNum[v] = 0;
 			return false;
 		}
 	}
@@ -81,13 +80,5 @@ public class Color {
 			}
 		}
 		return false;
-	}
-
-	boolean isFinished() {
-		for (int i = 0; i < chromaticNum.length; i++) {
-			if (isConflict(i) || chromaticNum[i] == 0)
-				return false;
-		}
-		return true;
 	}
 }

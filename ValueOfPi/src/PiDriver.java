@@ -15,7 +15,7 @@ public class PiDriver extends Pi {
 		double piAverageTRNG = 0.0;
 		double piAvgBBS = 0.0;
 		double piAvgInt = 0.0;
-		int size = 15;
+		int size = 10;
 
 		for (int i = 1; i < (size + 1); i++) {
 			trngNum = initTRNGArray("test" + i + ".txt");
