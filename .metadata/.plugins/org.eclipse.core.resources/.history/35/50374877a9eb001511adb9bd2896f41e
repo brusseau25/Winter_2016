@@ -7,11 +7,9 @@ import java.util.Scanner;
 public class Color {
 	public static int[][] colorArray = null;
 	public static int[] chromaticNum = null;
-	public static String file = "";
 
 	public Color(String file) {
 		Scanner scanner = null;
-		this.file = file;
 		int num = 0;
 		int num2 = 0;
 		try {
@@ -52,7 +50,7 @@ public class Color {
 	public static void writeColor() {
 		PrintWriter print = null;
 		try {
-			print = new PrintWriter(file + "Out.txt");
+			print = new PrintWriter("fileOut.txt");
 			print.write(color() + "\n");
 			for (int j = 0; j < colorArray.length; j++) {
 				print.write((j + 1) + " " + chromaticNum[j] + "\n");
@@ -68,7 +66,7 @@ public class Color {
 	}
 
 	public static int color() {
-		for (int i = 11; i <= colorArray.length; i++) {
+		for (int i = 1; i <= colorArray.length; i++) {
 			System.out.println("Now attempting to color with " + i + " colors");
 			if (color(0, i)) {
 				return i;
@@ -94,7 +92,7 @@ public class Color {
 	}
 
 	static boolean isConflict(int v) {
-		for (int i = 0; i < v; i++) {
+		for (int i = 0; i < colorArray.length; i++) {
 			if ((colorArray[v][i] == 1)) {
 				if (chromaticNum[v] == chromaticNum[i]) {
 					return true;
