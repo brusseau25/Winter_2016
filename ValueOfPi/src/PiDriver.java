@@ -15,30 +15,33 @@ public class PiDriver extends Pi {
 		double piAverageTRNG = 0.0;
 		double piAvgBBS = 0.0;
 		double piAvgInt = 0.0;
-		int size = 10;
+		int runs = 10;
 
-		for (int i = 1; i < (size + 1); i++) {
+		// test runs for TRNG
+		for (int i = 1; i < (runs + 1); i++) {
 			trngNum = initTRNGArray("test" + i + ".txt");
 			calcGCD(trngNum);
 			piAverageTRNG += estimatePI(trngNum);
 		}
-		piAverageTRNG /= size;
+		piAverageTRNG /= runs;
 		System.out.printf("Estimate of pi (trng array) = %f \n", piAverageTRNG);
 
-		for (int i = 1; i < (size + 1); i++) {
+		// test runs for BBS
+		for (int i = 1; i < (runs + 1); i++) {
 			bbsArray = generateBBS(bbsArray);
 			calcGCD(bbsArray);
 			piAvgBBS += estimatePI(bbsArray);
 		}
-		piAvgBBS /= size;
+		piAvgBBS /= runs;
 		System.out.printf("Estimate of pi (bbs array) = %f \n", piAvgBBS);
 
-		for (int i = 1; i < (size + 1); i++) {
+		// test runs for Random class (LCG method)
+		for (int i = 1; i < (runs + 1); i++) {
 			randIntArray = initIntArray(randIntArray.length);
 			calcGCD(randIntArray);
 			piAvgInt += estimatePI(randIntArray);
 		}
-		piAvgInt /= size;
+		piAvgInt /= runs;
 		System.out.printf("Estimate of pi (lcg array) = %f \n", piAvgInt);
 
 	}

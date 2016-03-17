@@ -1,4 +1,6 @@
-11
+Range between 9-11
+
+coloring with 11 colors
 1 1
 2 2
 3 1

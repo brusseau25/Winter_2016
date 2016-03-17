@@ -19,7 +19,7 @@ public class Pi {
 	static double gcd;
 	static int sumInt;
 
-	// initialize array based on input given from a file
+	// initialize TRNG array based on input given from a file
 	public static int[] initTRNGArray(String file) {
 		int[] matrixA = null;
 		Scanner scanner = null;
@@ -41,16 +41,18 @@ public class Pi {
 		return matrixA;
 	}
 
+	// initialize LCG array
+	// (uses same modular value as BBS for closer comparison)
 	public static int[] initIntArray(int length) {
 		int[] matrix = new int[length];
-		// initialize int array
 		for (int i = 0; i < matrix.length; i++) {
 			matrix[i] = randNum.nextInt(192649) + 1;
 		}
 		return matrix;
 	}
 
-	// BBS method
+	// initialize BBS array
+	// (uses same modular value as LCG for closer comparison)
 	public static long[] generateBBS(long[] arr) {
 		long x = 101355;
 		long m = 192649;
@@ -60,6 +62,7 @@ public class Pi {
 		return arr;
 	}
 
+	// increments a counter for all relatively prime pairs
 	public static void calcGCD(int[] matrix) {
 		sumInt = 0;
 		// find gcd for int array
@@ -71,6 +74,7 @@ public class Pi {
 		}
 	}
 
+	// increments a counter for all relatively prime pairs
 	public static void calcGCD(long[] matrix) {
 		sumInt = 0;
 		// find gcd for int array
@@ -94,6 +98,7 @@ public class Pi {
 		return findGCD(y, x % y);
 	}
 
+	// estimates the value of pi
 	protected static double estimatePI(int[] matrix) {
 		double PI, num;
 		num = (double) sumInt / matrix.length;
@@ -102,6 +107,7 @@ public class Pi {
 		return PI;
 	}
 
+	// estimates the value of pi
 	protected static double estimatePI(long[] matrix) {
 		double PI, num;
 		num = (double) sumInt / matrix.length;

@@ -1,3 +1,10 @@
+
+/*
+ * Brandon Russeau
+ * COSC 314
+ * Programming Assignment 3
+ * Driver for Color class
+ */
 import java.util.Scanner;
 
 public class ColorDriver extends Color {
@@ -15,7 +22,6 @@ public class ColorDriver extends Color {
 		file = keyboard.nextLine();
 
 		new Color(file);
-		// colorMatrix.color();
 		writeColor();
 
 		keyboard.close();

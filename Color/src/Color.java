@@ -1,3 +1,12 @@
+
+/*
+ * Brandon Russeau
+ * COSC 314
+ * Programming Assignment 3
+ * Find the minimum chromatic number of a graph
+ * using a brute-force approach
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,9 +18,10 @@ public class Color {
 	public static int[] chromaticNum = null;
 	public static String file = "";
 
+	// initialize adjacency matrix
 	public Color(String file) {
 		Scanner scanner = null;
-		this.file = file;
+		Color.file = file;
 		int num = 0;
 		int num2 = 0;
 		try {
@@ -34,21 +44,7 @@ public class Color {
 		}
 	}
 
-	public static void print() {
-		for (int i = 0; i < colorArray.length; i++) {
-			for (int j = 0; j < colorArray.length; j++) {
-				System.out.print(colorArray[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
-
-	public static void printColor() {
-		for (int j = 0; j < colorArray.length; j++) {
-			System.out.println((j + 1) + " " + chromaticNum[j]);
-		}
-	}
-
+	// write the vertex and its color to a file
 	public static void writeColor() {
 		PrintWriter print = null;
 		try {
@@ -68,7 +64,7 @@ public class Color {
 	}
 
 	public static int color() {
-		for (int i = 11; i <= colorArray.length; i++) {
+		for (int i = 15; i <= colorArray.length; i++) {
 			System.out.println("Now attempting to color with " + i + " colors");
 			if (color(0, i)) {
 				return i;
@@ -78,7 +74,7 @@ public class Color {
 	}
 
 	static boolean color(int v, int m) {
-		if (v == (colorArray.length)) {
+		if (v == colorArray.length) {
 			return true;
 		} else {
 			for (int i = 1; i <= m; i++) {
@@ -93,6 +89,7 @@ public class Color {
 		}
 	}
 
+	// check neighbors for the same color
 	static boolean isConflict(int v) {
 		for (int i = 0; i < v; i++) {
 			if ((colorArray[v][i] == 1)) {
