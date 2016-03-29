@@ -1,0 +1,15 @@
+import java.io.FileWriter;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FileWriter fw = null;
+		int[] refString = null;
+		int frameNum = 0;
+
+		fw = new FileWriter("pages.dat");
+
+	}
+
+}

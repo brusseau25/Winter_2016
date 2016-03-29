@@ -1,0 +1,22 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FileWriter fw = null;
+		PagingAlgorithm p = null;
+		int[] refString = null;
+		int frameNum = 0;
+
+		try {
+			fw = new FileWriter("pages.dat");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
