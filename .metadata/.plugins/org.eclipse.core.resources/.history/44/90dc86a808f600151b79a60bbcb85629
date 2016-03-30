@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class PagingAlgorithms {
+	private int frames = 0;
+	private ArrayList<Integer> referenceString = new ArrayList<Integer>();
+	private int pointer = 0;
+	private int[][] pages = null;
+	private Scanner scan = null;
+	
+	public PagingAlgorithms(){
+		
+	}
+
+	public void fIFO() {
+
+	}
+
+	public void opt() {
+
+	}
+
+	public void lRU() {
+
+	}
+
+	public void lFU() {
+
+	}
+
+}

@@ -1,0 +1,51 @@
+import java.util.Random;
+
+public class Customer {
+	// variables
+	private int numOrders;
+	private double amount;
+	private long customerID;
+	private long uniqueID;
+	private int[] leftHalf = new int[10];
+	private int[] rightHalf = new int[10];
+	private Random rn = new Random();
+	private Hashmap right;
+	
+
+	public Customer(int numOrd, double amt, long id) {
+		numOrders = numOrd;
+		amount = amt;
+		customerID = id;
+		uniqueID = rn.nextLong();
+	}
+
+	public String getInfo() {
+		return customerID + " " + numOrders + " " + amount;
+	}
+
+	// Generate N money orders and assign a different random uniqueness string
+	// number for each of the N ecash money orders
+
+	// Secret splitting
+	public void sercretSplit() {
+		for (int i = 0; i < 10; i++) {
+			rightHalf[i] = rn.nextInt();
+			leftHalf[i] = (int) (customerID ^ rightHalf[i]);
+		}
+	}
+
+	// Bit commitment
+	public void bitCommitment() {
+		
+	}
+
+	// Blind signature protocol
+	public void blind() {
+
+	}
+
+	// Reveal chosen half of identity string
+	public void revealHalf() {
+
+	}
+}

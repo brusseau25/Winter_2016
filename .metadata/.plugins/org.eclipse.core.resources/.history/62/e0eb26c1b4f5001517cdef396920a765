@@ -1,0 +1,38 @@
+
+public class Customer {
+	// variables
+	private int numOrders;
+	private double amount;
+	private long customerID;
+	private int[] leftHalf = new int[10];
+	private int[] rightHalf = new int[10];
+	
+	public Customer(int numOrd, double amt, long id){
+		numOrders = numOrd;
+		amount = amt;
+		customerID = id;
+	}
+
+	// Generate N money orders and assign a different random uniqueness string
+	// number for each of the N ecash money orders
+
+	// Secret splitting
+	public void sercretSplit() {
+		Random rn = new Random();
+	}
+
+	// Bit commitment
+	public void bitCommitment() {
+
+	}
+
+	// Blind signature protocol
+	public void blind() {
+
+	}
+
+	// Reveal chosen half of identity string
+	public void revealHalf() {
+
+	}
+}

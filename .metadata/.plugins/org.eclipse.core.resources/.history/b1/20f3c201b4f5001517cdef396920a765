@@ -1,0 +1,24 @@
+
+public class Customer {
+	// variables
+	// uniqueID randomly generated
+	// RNG
+	// Amount
+	// ID
+	private int numOrders;
+	private double amount;
+	private long customerID;
+	private int[] leftHalf = new int[10];
+	private int[] rightHalf = new int[10];
+
+	// Generate N money orders and assign a different random uniqueness string
+	// number for each of the N ecash money orders
+
+	// Secret splitting
+
+	// Bit commitment
+
+	// Blind signature protocol
+
+	// Reveal chosen half of identity string
+}

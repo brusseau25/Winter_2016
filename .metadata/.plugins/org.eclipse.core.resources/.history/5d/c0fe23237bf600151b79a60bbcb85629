@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = null;
+		PagingAlgorithms p = null;
+		ArrayList<Integer> refString = new ArrayList<Integer>();
+		int frameNum = 0;
+
+		p = new PagingAlgorithms();
+		p.fIFO();
+	}
+
+}
