@@ -38,9 +38,7 @@ public class FIFO {
 	}
 
 	public void fifoAlgo() {
-		for (int i = 0; i < refLen; i++)
-
-		{
+		for (int i = 0; i < refLen; i++) {
 			int search = -1;
 			for (int j = 0; j < frames; j++) {
 				if (buffer[j] == reference[i]) {
@@ -59,14 +57,26 @@ public class FIFO {
 				pages[i][j] = buffer[j];
 		}
 
-		for (
+		if (refLen > 80) {
+			for (int i = 0; i < frames; i++) {
+				for (int j = 0; j < 78; j++)
+					System.out.printf("%3d ", pages[j][i]);
+				System.out.println();
+			}
 
-		int i = 0; i < frames; i++)
-
-		{
-			for (int j = 0; j < refLen; j++)
-				System.out.printf("%3d ", pages[j][i]);
 			System.out.println();
+			for (int i = 0; i < frames; i++) {
+				for (int j = 78; j < refLen; j++)
+					System.out.printf("%3d ", pages[j][i]);
+				System.out.println();
+			}
+
+		} else {
+			for (int i = 0; i < frames; i++) {
+				for (int j = 0; j < refLen; j++)
+					System.out.printf("%3d ", pages[j][i]);
+				System.out.println();
+			}
 		}
 
 		System.out.println("\nThe number of Faults: " + fault + "\n");

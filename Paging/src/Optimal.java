@@ -84,10 +84,26 @@ public class Optimal {
 				pages[i][j] = buffer[j];
 		}
 
-		for (int i = 0; i < frames; i++) {
-			for (int j = 0; j < refLen; j++)
-				System.out.printf("%3d ", pages[j][i]);
+		if (refLen > 80) {
+			for (int i = 0; i < frames; i++) {
+				for (int j = 0; j < 78; j++)
+					System.out.printf("%3d ", pages[j][i]);
+				System.out.println();
+			}
+
 			System.out.println();
+			for (int i = 0; i < frames; i++) {
+				for (int j = 78; j < refLen; j++)
+					System.out.printf("%3d ", pages[j][i]);
+				System.out.println();
+			}
+
+		} else {
+			for (int i = 0; i < frames; i++) {
+				for (int j = 0; j < refLen; j++)
+					System.out.printf("%3d ", pages[j][i]);
+				System.out.println();
+			}
 		}
 		System.out.println("\nThe number of Faults: " + fault + "\n");
 	}
