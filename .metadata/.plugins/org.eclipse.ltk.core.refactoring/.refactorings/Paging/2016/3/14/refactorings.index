@@ -1,2 +1,7 @@
 1459343423245	Rename local variable 'ref_len'
 1459343438235	Rename local variable 'mem_layout'
+1459373226198	Rename field 'ref_len'
+1459373240895	Rename field 'stack'
+1459373266285	Rename field 'mem_layout'
+1459374568694	Rename field 'mem_layout'
+1459374625644	Rename field 'ref_len'

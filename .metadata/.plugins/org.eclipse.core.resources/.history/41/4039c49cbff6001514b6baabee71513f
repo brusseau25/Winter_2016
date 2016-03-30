@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = null;
+
+		FIFO p = new FIFO();
+		p.fifoAlgo();
+		
+		LRU r = new LRU();
+		r.lruAlgo();
+
+	}
+
+}

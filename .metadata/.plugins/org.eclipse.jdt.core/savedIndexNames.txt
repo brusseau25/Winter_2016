@@ -10,7 +10,6 @@ INDEX VERSION 1.127+C:\Users\Brandon\Documents\GitHub\Winter_2016\.metadata\.plu
 2445747412.index
 2585328351.index
 2544865078.index
-583903987.index
 486417617.index
 52205867.index
 2474304018.index
