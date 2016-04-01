@@ -1,8 +1,15 @@
+
+/*
+ * Brandon Russeau
+ * COSC 423
+ * Virtual Memory Page Replacement Project
+ * Least Recently Used replacement algorithm
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LRU {
-	// BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	int frames, pointer = 0, fault = 0, refLen;
 	Boolean isFull = false;
 	Scanner scan = null;
@@ -36,6 +43,10 @@ public class LRU {
 		System.out.println();
 	}
 
+	public int getFaults() {
+		return this.fault;
+	}
+
 	public void lruAlgo() {
 		for (int i = 0; i < refLen; i++) {
 			if (referenceString.contains(reference[i])) {
@@ -51,12 +62,12 @@ public class LRU {
 			}
 			if (search == -1) {
 				if (isFull) {
-					int min_loc = refLen;
+					int index = refLen;
 					for (int j = 0; j < frames; j++) {
 						if (referenceString.contains(buffer[j])) {
 							int temp = referenceString.indexOf(buffer[j]);
-							if (temp < min_loc) {
-								min_loc = temp;
+							if (temp < index) {
+								index = temp;
 								pointer = j;
 							}
 						}
@@ -96,6 +107,6 @@ public class LRU {
 			}
 		}
 
-		System.out.println("\nThe number of Faults: " + fault + "\n");
+		System.out.println();
 	}
 }

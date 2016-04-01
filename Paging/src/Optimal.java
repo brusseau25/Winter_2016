@@ -1,9 +1,14 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
+/*
+ * Brandon Russeau
+ * COSC 423
+ * Virtual Memory Page Replacement Project
+ * Optimal Replacement algorithm
+ */
+
 import java.util.ArrayList;
 
 public class Optimal {
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	int frames, pointer = 0, fault = 0, refLen;
 	boolean isFull = false;
 	int buffer[];
@@ -35,6 +40,10 @@ public class Optimal {
 		System.out.println();
 	}
 
+	public int getFaults() {
+		return this.fault;
+	}
+
 	public void optimalAlgo() {
 		for (int i = 0; i < refLen; i++) {
 			int search = -1;
@@ -47,12 +56,12 @@ public class Optimal {
 			if (search == -1) {
 				if (isFull) {
 					int index[] = new int[frames];
-					boolean index_flag[] = new boolean[frames];
+					boolean flag[] = new boolean[frames];
 					for (int j = i + 1; j < refLen; j++) {
 						for (int k = 0; k < frames; k++) {
-							if ((reference[j] == buffer[k]) && (index_flag[k] == false)) {
+							if ((reference[j] == buffer[k]) && (flag[k] == false)) {
 								index[k] = j;
-								index_flag[k] = true;
+								flag[k] = true;
 								break;
 							}
 						}
@@ -105,6 +114,6 @@ public class Optimal {
 				System.out.println();
 			}
 		}
-		System.out.println("\nThe number of Faults: " + fault + "\n");
+		System.out.println();
 	}
 }

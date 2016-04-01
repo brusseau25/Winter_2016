@@ -1,3 +1,11 @@
+
+/*
+ * Brandon Russeau
+ * COSC 423
+ * Virtual Memory Page Replacement Project
+ * First In, First Out replacement algorithm
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,6 +43,10 @@ public class FIFO {
 			reference[i] = referenceString.get(i);
 		}
 		System.out.println();
+	}
+
+	public int getFaults() {
+		return this.fault;
 	}
 
 	public void fifoAlgo() {
@@ -79,6 +91,6 @@ public class FIFO {
 			}
 		}
 
-		System.out.println("\nThe number of Faults: " + fault + "\n");
+		System.out.println();
 	}
 }
