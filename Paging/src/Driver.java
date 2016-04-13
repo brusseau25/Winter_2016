@@ -48,8 +48,8 @@ public class Driver {
 			LRU q = new LRU(referenceString, frames);
 			q.lruAlgo();
 
-			LFU r = new LFU(referenceString, frames);
-			r.lfuAlgo();
+			// LFU r = new LFU(referenceString, frames);
+			// r.lfuAlgo();
 
 			Optimal s = new Optimal(referenceString, frames);
 			s.optimalAlgo();
@@ -57,7 +57,8 @@ public class Driver {
 			System.out.println("Scheme  Faults  %Optimal");
 			System.out.printf("FIFO %5d %10.1f%%\n", p.getFaults(), ((double) p.getFaults() / s.getFaults()) * 100);
 			System.out.printf("LRU %6d %10.1f%%\n", q.getFaults(), ((double) q.getFaults() / s.getFaults()) * 100);
-			System.out.printf("LFU %6d %10.1f%%\n", r.getFaults(), ((double) r.getFaults() / s.getFaults()) * 100);
+			// System.out.printf("LFU %6d %10.1f%%\n", r.getFaults(), ((double)
+			// r.getFaults() / s.getFaults()) * 100);
 			System.out.printf("Optimal %1d %11.1f%%\n", s.getFaults(), ((double) s.getFaults() / s.getFaults()) * 100);
 
 			System.out.println();

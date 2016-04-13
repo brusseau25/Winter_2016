@@ -18,6 +18,8 @@ public class Driver {
 		System.out.println(alice.getInfo());
 
 		alice.sercretSplit();
+		alice.getLeft();
+		alice.getRight();
 		alice.bitCommitment();
 		alice.getIDs();
 	}

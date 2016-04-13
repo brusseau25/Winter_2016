@@ -90,7 +90,7 @@ public class FIFO {
 				System.out.println();
 			}
 		}
-
+		System.out.println("Page Faults: " + fault);
 		System.out.println();
 	}
 }

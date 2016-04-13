@@ -14,14 +14,28 @@ public class Customer {
 	private int[] leftHalf = new int[10];
 	private int[] rightHalf = new int[10];
 	private Random rn = new Random();
-	private HashMap<Integer, Integer> right;
-	private HashMap<Integer, Integer> left;
+	private HashMap<Integer, Integer> right = new HashMap<Integer, Integer>();
+	private HashMap<Integer, Integer> left = new HashMap<Integer, Integer>();
 
 	public Customer(int numOrd, double amt, long id) {
 		numOrders = numOrd;
 		amount = amt;
 		customerID = id;
 		uniqueID = rn.nextLong();
+	}
+
+	public void getLeft() {
+		for (int i = 0; i < leftHalf.length; i++) {
+			System.out.print(leftHalf[i] + " ");
+		}
+		System.out.println();
+	}
+
+	public void getRight() {
+		for (int i = 0; i < rightHalf.length; i++) {
+			System.out.print(rightHalf[i] + " ");
+		}
+		System.out.println();
 	}
 
 	public String getInfo() {
@@ -43,20 +57,26 @@ public class Customer {
 	public void bitCommitment() {
 		int r1 = 0;
 		int r2 = 0;
-		int l1 = 0;
-		int l2 = 0;
 
 		for (int i = 0; i < rightHalf.length; i++) {
 			r1 = rn.nextInt();
 			r2 = rn.nextInt();
-			right.put(((rightHalf[i] ^ r1 ^ r2) % 229), r1);
+			// right.put(Integer.toString((rightHalf[i] ^ r1 ^ r2)).hashCode(),
+			// r1);
+			right.put(hashFunction(rightHalf[i], r1, r2), r1);
 		}
 
-		for (int i = 0; i < leftHalf.length; i++) {
-			l1 = rn.nextInt();
-			l2 = rn.nextInt();
-			right.put(Integer.toString((leftHalf[i] ^ l1 ^ l2)).hashCode(), l1);
+		for (int j = 0; j < leftHalf.length; j++) {
+			r1 = rn.nextInt();
+			r2 = rn.nextInt();
+			left.put((hashFunction(leftHalf[j], r1, r2)), r1);
 		}
+	}
+
+	private int hashFunction(int x, int y, int z) {
+		// return Integer.toString(x).hashCode() ^
+		// Integer.toString(y).hashCode() ^ Integer.toString(z).hashCode();
+		return Integer.toString(x ^ y ^ z).hashCode();
 	}
 
 	public void getIDs() {
@@ -81,11 +101,37 @@ public class Customer {
 
 	// Blind signature protocol
 	public void blind() {
+		double k = rn.nextDouble();
+		double e = rn.nextDouble();
+		double n = rn.nextDouble();
+
+		double result = Math.pow(k, e) % n;
+
+		uniqueID = (long) ((uniqueID * result) % n);
+		amount = (amount * result) % n;
+		for (Integer key : right.keySet()) {
+			key = (int) ((key * result) % n);
+		}
+		for (Integer value : right.values()) {
+			value = (int) ((value * result) % n);
+		}
+		for (Integer key : left.keySet()) {
+			key = (int) ((key * result) % n);
+		}
+		for (Integer value : left.values()) {
+			value = (int) ((value * result) % n);
+		}
 
 	}
 
 	// Reveal chosen half of identity string
-	public void revealHalf() {
-
+	public int revealHalf(int num, int index) {
+		if (num == 0) {
+			// reveal leftHalf
+			return leftHalf[index];
+		} else {
+			// reveal rightHalf
+			return rightHalf[index];
+		}
 	}
 }
