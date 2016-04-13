@@ -1,0 +1,30 @@
+import java.util.LinkedList;
+
+public class ContiguousAlloc {
+	LinkedList<Integer> diskSpace = null;
+
+	public ContiguousAlloc(int size) {
+		diskSpace = new LinkedList<Integer>();
+		for (int i = 0; i < size; i++) {
+			diskSpace.add(-1);
+		}
+	}
+
+	public void add(String name, int size) {
+		for (int i = 0; i < size; i++) {
+			diskSpace.add(name, 1);
+		}
+	}
+
+	public void del(String name) {
+
+	}
+
+	public void read(String name) {
+
+	}
+
+	public void print() {
+
+	}
+}

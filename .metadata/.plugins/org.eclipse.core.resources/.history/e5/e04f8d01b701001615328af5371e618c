@@ -1,0 +1,22 @@
+
+public class ContiguousAlloc {
+	public ContiguousAlloc() {
+	}
+
+	public void add() {
+
+	}
+
+	public void del() {
+
+	}
+
+	public void read() {
+
+	}
+
+	public void print() {
+
+	}
+
+}

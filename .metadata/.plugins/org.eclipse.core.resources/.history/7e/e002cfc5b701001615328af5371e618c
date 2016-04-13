@@ -1,0 +1,8 @@
+import java.util.Scanner;
+
+public class Driver {
+	Scanner io;
+	
+	io = new Scanner(new File("disk.dat"));
+
+}
