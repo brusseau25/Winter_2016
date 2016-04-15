@@ -1,6 +1,15 @@
-
+/* Brandon Russeau
+ * COSC 423
+ */
 public class IndexedAlloc {
-	public IndexedAlloc() {
+	LinkedList diskSpace = null;
+	int counter = 1;
+
+	public IndexedAlloc(int size) {
+		diskSpace = new LinkedList();
+		for (int i = 0; i < size; i++) {
+			diskSpace.add(null, -1);
+		}
 	}
 
 	public void add(String name, int size) {

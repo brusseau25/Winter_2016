@@ -1,0 +1,21 @@
+
+public class IndexedAlloc {
+	public IndexedAlloc() {
+	}
+
+	public void add(String name, int size) {
+
+	}
+
+	public void del(String name) {
+
+	}
+
+	public void read(String name) {
+
+	}
+
+	public void print() {
+
+	}
+}

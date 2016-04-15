@@ -1,20 +1,23 @@
 /* Brandon Russeau
- * E01160846
+ * COSC 423
  * Linked list class with Node private inner class
  */
 
 public class LinkedList {
 	// node class
 	private class Node {
+		String name;
 		int item;
 		Node link;
 
 		public Node() {
+			name = null;
 			item = Integer.MIN_VALUE;
 			link = null;
 		}
 
-		public Node(int x, Node p) {
+		public Node(String name, int x, Node p) {
+			this.name = name;
 			item = x;
 			link = p;
 		}
@@ -27,20 +30,21 @@ public class LinkedList {
 	}
 
 	// add node at the start of the list
-	public void addToStart(int item) {
-		head = new Node(item, head);
+	public void addToStart(String name, int item) {
+		head = new Node(name, item, head);
 	}
 
 	// add node to end of the list
-	public void addToEnd(int data) {
+	public void add(String name, int data) {
 		Node newLast = new Node();
 		if (head == null) {
-			addToStart(data);
+			addToStart(name, data);
 		}
 		Node position = head;
 		while (position.link != null) {
 			position = position.link;
 		}
+		newLast.name = name;
 		newLast.item = data;
 		position.link = newLast;
 	}
@@ -55,15 +59,11 @@ public class LinkedList {
 	}
 
 	// delete specific node
-	public void deleteNode(int target) {
-		Node p = head;
+	public void deleteNode(String target) {
 		Node position = head;
 		if (contains(target)) {
-			p = find(target);
-			while (position.link != p) {
-				position = position.link;
-			}
-			position.link = p.link;
+			position.name = null;
+			position.item = -1;
 		}
 	}
 
@@ -80,17 +80,17 @@ public class LinkedList {
 	}
 
 	// returns true if list contains target element
-	public boolean contains(int target) {
+	public boolean contains(String target) {
 		return (find(target) != null);
 	}
 
 	// find first node to contain target element
-	private Node find(int target) {
+	private Node find(String target) {
 		Node position = head;
-		int item;
+		String name;
 		while (position != null) {
-			item = position.item;
-			if (item == target)
+			name = position.name;
+			if (name == target)
 				return position;
 			position = position.link;
 		}
@@ -101,17 +101,12 @@ public class LinkedList {
 	public void print() {
 		Node position = head;
 		while (position != null) {
-			System.out.print(position.item + " ");
+			if(position.name == position.link.name){
+			System.out.print(position.name + " " + position.item + " ");
 			position = position.link;
+			}
+			else
 		}
 		System.out.println();
 	}
-
-	private void printListRec(Node p) {
-		if (p != null) {
-			System.out.print(p.item + " ");
-			printListRec(p.link);
-		}
-	}
-
 }

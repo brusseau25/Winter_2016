@@ -1,6 +1,5 @@
 /* Brandon Russeau
  * COSC 423
- * Linked list class with Node private inner class
  */
 
 public class LinkedList {
@@ -60,10 +59,14 @@ public class LinkedList {
 
 	// delete specific node
 	public void deleteNode(String target) {
+		Node p = head;
 		Node position = head;
 		if (contains(target)) {
-			position.name = null;
-			position.item = -1;
+			p = find(target);
+			while (position.link != p) {
+				position = position.link;
+			}
+			position.link = p.link;
 		}
 	}
 
@@ -100,9 +103,17 @@ public class LinkedList {
 	// display list
 	public void print() {
 		Node position = head;
+		String name = position.name;
+		System.out.print(position.name + " ");
 		while (position != null) {
-			System.out.print(position.name + " " + position.item + " ");
-			position = position.link;
+			if (name == position.name) {
+				System.out.print(position.item + " ");
+				position = position.link;
+			} else {
+				name = position.name;
+				System.out.print("\n" + position.name + " " + position.item + " ");
+				position = position.link;
+			}
 		}
 		System.out.println();
 	}

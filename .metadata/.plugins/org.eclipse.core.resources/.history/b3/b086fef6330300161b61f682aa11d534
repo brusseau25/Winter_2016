@@ -1,0 +1,28 @@
+
+public class IndexedAlloc {
+	LinkedList diskSpace = null;
+	int counter = 1;
+
+	public IndexedAlloc() {
+		diskSpace = new LinkedList();
+		for (int i = 0; i < size; i++) {
+			diskSpace.add(null, -1);
+		}
+	}
+
+	public void add(String name, int size) {
+
+	}
+
+	public void del(String name) {
+
+	}
+
+	public void read(String name) {
+
+	}
+
+	public void print() {
+
+	}
+}
